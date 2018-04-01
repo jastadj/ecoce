@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cursor.png-f4cd966b3560f41a26d0bfe5ac28c1cd.stex"
+path="res://.import/tree.png-a6d174c78c2a7515f7c4fd293742519e.stex"
 
 [deps]
 
-source_file="res://Tiles/cursor.png"
-source_md5="a42f8a7fe0731b60451e42ffdfa7218f"
+source_file="res://SurfaceObjs/tree.png"
+source_md5="3ac08894762d42b493a8f0d4fb6fac98"
 
-dest_files=[ "res://.import/cursor.png-f4cd966b3560f41a26d0bfe5ac28c1cd.stex" ]
-dest_md5="f375b13bd1275c1748d4b739cfd5fc81"
+dest_files=[ "res://.import/tree.png-a6d174c78c2a7515f7c4fd293742519e.stex" ]
+dest_md5="82e071462f09a87ffe2f3b4fe285aaad"
 
 [params]
 

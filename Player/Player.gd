@@ -52,15 +52,22 @@ func _input(event):
 			panMode = false
 			cameraPos = camera.position
 	elif event.is_action("ui_zoom_in"):
-		if camera.zoom.x > 0.5:
+		if camera.zoom.x > 0.5 && event.is_pressed():
 			camera.zoom.x -= zoomStep
 			camera.zoom.y -= zoomStep
+			print("zoom in:" + str(camera.zoom))
 		pass
 	elif event.is_action("ui_zoom_out"):
-		if camera.zoom.x < 1.0:
+		if camera.zoom.x < 1.0 && event.is_pressed():
 			camera.zoom.x += zoomStep
 			camera.zoom.y += zoomStep
+			print("zoom out:" + str(camera.zoom))
 		pass
+	elif event.is_action("ui_accept"):
+		if event.is_pressed():
+			var mousepos = get_global_mouse_position()
+			var ipos = Globals.worldToIso(mousepos.x, mousepos.y)
+			get_parent().convertTile(ipos.x, ipos.y, "grass")
 	
 	if panMode && event is InputEventMouseMotion:
 		panningOffset = get_viewport().get_mouse_position() - panningStart

@@ -2,7 +2,8 @@ extends Node
 
 const TILE_X = 243
 const TILE_Y = 210
-const TILE_VECTOR = Vector2(31,17)
+const TILE_VECTOR = Vector2(31,18)
+const MAX_TILES = 512
 
 func isoToWorld(x, y):
 	var rowPos = TILE_X - TILE_VECTOR.x * y

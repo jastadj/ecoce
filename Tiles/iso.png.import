@@ -7,10 +7,10 @@ path="res://.import/iso.png-690b69ba9e770b7346deb715abc5d88d.stex"
 [deps]
 
 source_file="res://Tiles/iso.png"
-source_md5="d74403a91f3be19c9b6e2be91e54484b"
+source_md5="0d34a836a77a3c52b41e113b78658cde"
 
 dest_files=[ "res://.import/iso.png-690b69ba9e770b7346deb715abc5d88d.stex" ]
-dest_md5="ff64c6e0d8357a4c73c6ac2aa3e2e38d"
+dest_md5="e76824b5c323bf6de978ded70cab6952"
 
 [params]
 
