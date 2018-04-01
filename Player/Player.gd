@@ -7,6 +7,9 @@ var cameraPos
 var panningStart = Vector2(0,0)
 var panningOffset = Vector2(0,0)
 
+var zoomStep = 0.1
+
+
 var cursor
 
 func _ready():
@@ -48,6 +51,16 @@ func _input(event):
 		else:
 			panMode = false
 			cameraPos = camera.position
+	elif event.is_action("ui_zoom_in"):
+		if camera.zoom.x > 0.5:
+			camera.zoom.x -= zoomStep
+			camera.zoom.y -= zoomStep
+		pass
+	elif event.is_action("ui_zoom_out"):
+		if camera.zoom.x < 1.0:
+			camera.zoom.x += zoomStep
+			camera.zoom.y += zoomStep
+		pass
 	
 	if panMode && event is InputEventMouseMotion:
 		panningOffset = get_viewport().get_mouse_position() - panningStart
