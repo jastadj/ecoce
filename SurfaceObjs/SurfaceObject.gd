@@ -3,15 +3,20 @@ extends Node2D
 var tile_pos_x
 var tile_pos_y
 
+var objDict = {"name":"unk",
+					  "requiresTile":null}
+
 func setType(tname):
 	
 	match tname:
 		"tree":
 			add_child(load("res://SurfaceObjs/Tree.tscn").instance())
+			objDict["requiresTile"] = "grass"
 		_:
 			print("Error setting obj type: unknown type " + tname)
 	
 	name = tname;
+	objDict["name"] = tname
 	
 	
 

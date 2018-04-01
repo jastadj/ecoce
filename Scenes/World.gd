@@ -43,6 +43,8 @@ func _ready():
 				newtile.setType("water")
 			elif x == 5:
 				newtile.setType("sand")
+			elif x == 0 && y == 0:
+				newtile.setType("grass")
 			else:
 				newtile.setType("mud")
 			
@@ -87,6 +89,7 @@ func addObject(x,y,objname):
 		return
 	
 	var pos = Globals.isoToWorld(x,y) + Vector2(0,-32)
+	var tileType = tileMap[y][x].tileDict["name"]
 	
 	var newobj = surfaceObjScene.instance()
 	newobj.setType(objname)
@@ -95,7 +98,11 @@ func addObject(x,y,objname):
 	newobj.tile_pos_x = x
 	newobj.tile_pos_y = y
 	
-	surfaceObjects.add_child(newobj)
-	objectMap[y][x] = newobj
+	# object can be placed on tile
+	if newobj.objDict["requiresTile"] == tileType || newobj.objDict["requiresTile"] == null:
+		surfaceObjects.add_child(newobj)
+		objectMap[y][x] = newobj
+	else:
+		newobj.queue_free()
 	
 	
