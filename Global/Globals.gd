@@ -5,6 +5,17 @@ const TILE_Y = 210
 const TILE_VECTOR = Vector2(31,18)
 const MAX_TILES = 512
 
+var _tileDict = [
+{"name":"default","frame":0,"color":Color(1,1,1,1)},
+{"name":"water","frame":1,"color":Color(0,0,1,1)},
+{"name":"grass","frame":2,"color":Color(0,1,0,1)},
+{"name":"mud","frame":3,"color":Color(0.56,0.33,0.23,1)},
+{"name":"sand","frame":4,"color":Color(1,1,0,1)}]
+
+var _objDict = [
+{"name":"tree", "scene":"Tree.tscn", "requiresTile":"grass"}
+]
+
 func isoToWorld(x, y):
 	var rowPos = TILE_X - TILE_VECTOR.x * y
 	var colPos = TILE_Y + TILE_VECTOR.y * y

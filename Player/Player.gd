@@ -9,7 +9,12 @@ var panningOffset = Vector2(0,0)
 
 var zoomStep = 0.1
 
+var mouseOverUI = false
 
+enum TOOL_MODE{TOOL_TILE, TOOL_OBJ}
+var toolMode = TOOL_TILE
+
+# ui
 var cursor
 
 func _ready():
@@ -39,8 +44,15 @@ func _process(delta):
 			cursor.hide()
 		
 	
-
 func _input(event):
+
+	#only handle panning even if mouse is over UI
+	if panMode && event is InputEventMouseMotion:
+		panningOffset = get_viewport().get_mouse_position() - panningStart
+
+func _unhandled_input(event):
+	
+	#if UI didnt accept the event, assume event happened outside of UI
 	
 	# if panning with middle mouse button
 	if event.is_action("ui_pan"):
@@ -67,7 +79,12 @@ func _input(event):
 		if event.is_pressed():
 			var mousepos = get_global_mouse_position()
 			var ipos = Globals.worldToIso(mousepos.x, mousepos.y)
-			get_parent().convertTile(ipos.x, ipos.y, "grass")
+			
+			if toolMode == TOOL_TILE:
+				var tnum = get_node("CanvasLayer/TileButton").value
+				var tdict = Globals._tileDict[tnum]
+				get_parent().convertTile(ipos.x, ipos.y, tdict["name"])
+			
 	
 	if panMode && event is InputEventMouseMotion:
 		panningOffset = get_viewport().get_mouse_position() - panningStart

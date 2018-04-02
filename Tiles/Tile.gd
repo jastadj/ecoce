@@ -4,6 +4,8 @@ var tileDict = {"name":"unk",
 				"frame":0,
 				"color":Color(1,1,1,1)}
 
+
+
 func emit():
 	
 	var p = get_node("Particles2D")
@@ -12,20 +14,16 @@ func emit():
 
 func setType(ntype):
 	
-	# tile definitions
-	match ntype:
-		"water":
-			get_node("Sprite").frame = 1
-		"grass":
-			get_node("Sprite").frame = 2
-			tileDict["color"] = Color(0,1,0,1)
-		"mud":
-			get_node("Sprite").frame = 3
-		"sand":
-			get_node("Sprite").frame = 4
-		_:
-			get_node("Sprite").frame = 0
-			print("Unknown tile type " + ntype)
+	var globaldict = Globals._tileDict
 	
-	name = ntype
-	tileDict["name"] = ntype
+	tileDict = null
+	
+	# tile definitions
+	for t in globaldict:
+		if t["name"] == ntype:
+			tileDict = t
+			get_node("Sprite").frame = tileDict["frame"]
+			name = ntype
+	
+	if tileDict == null:
+		print("Error setting tile type to " + ntype + ", not found in dict")
